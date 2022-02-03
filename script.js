@@ -22,7 +22,6 @@ searchInput.addEventListener("input", (e) => {
     const visible = page.title.includes(value) || page.description.includes(value)
     page.element.classList.toggle("hide", !visible)
   })
-  console.log(currentPage)
 })
 
 currentPage = pages.map(page => {
