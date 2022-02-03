@@ -2,7 +2,7 @@ const pages = [
     [
     "Santa's Winter Stronghold",
     "Special Christmas Level",
-    "pages/thechroniclesofroblox"
+    "pages/santaswinterstronghold"
   ],
    
    [
