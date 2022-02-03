@@ -1,9 +1,9 @@
-const pages = {
-  {
+const pages = [
+  [
     Title: "Robux";
     Description: "Robux is a currency that is used in Roblox."
-  }
-}
+  ]
+]
 
 const thingTemplate = document.querySelector("[data-thing-template]")
 
