@@ -1,4 +1,10 @@
 const pages = [
+   [
+    "The Chronicles Of Roblox",
+    "roblox lore",
+    "pages/thechroniclesofroblox"
+  ],
+  
   [
     "Robux",
     "Robux is a currency that is used in Roblox.",
