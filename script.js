@@ -28,9 +28,11 @@ currentPage = pages.map(page => {
   const card = thingTemplate.content.cloneNode(true).children[0]
   const header = card.querySelector("[data-header]")
   const body = card.querySelector("[data-body]")
+  const pagelink = card.querySelector("[data-pagelink]")
   
   header.textContent = page[0]
   body.textContent = page[1]
+  pagelink.href = "https://google.com"
   
   stuffContainer.append(card)
   
