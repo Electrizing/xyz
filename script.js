@@ -1,7 +1,7 @@
 const pages = [
   [
-    Title: "Robux";
-    Description: "Robux is a currency that is used in Roblox."
+    Title = "Robux",
+    Description = "Robux is a currency that is used in Roblox."
   ]
 ]
 
@@ -13,4 +13,4 @@ pages.forEach(page => {
   const body = card.querySelector("[data-body]")
   
   console.log(page)
-}
+})
