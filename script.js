@@ -1,4 +1,10 @@
 const pages = [
+    [
+    "Santa's Winter Stronghold",
+    "Special Christmas Level",
+    "pages/thechroniclesofroblox"
+  ],
+   
    [
     "The Chronicles Of Roblox",
     "roblox lore",
