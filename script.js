@@ -1,7 +1,7 @@
 const pages = [
   [
-    Title = "Robux",
-    Description = "Robux is a currency that is used in Roblox."
+    "Robux",
+    "Robux is a currency that is used in Roblox."
   ]
 ]
 
