@@ -2,13 +2,13 @@ const pages = [
   [
     "Robux",
     "Robux is a currency that is used in Roblox.",
-    "robux"
+    "pages/robux"
   ],
   
   [
     "Bruh",
     "bruh.",
-    "bruh"
+    "pages/bruh"
   ]
 ]
 
