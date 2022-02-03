@@ -18,6 +18,10 @@ const searchInput = document.querySelector("[data-search]")
 
 searchInput.addEventListener("input", (e) => {
   const value = e.target.value
+  currentPage.forEach(page => {
+    const visible = page.title.includes(value) || page.description.includes(value)
+    page.element.classList.toggle("hide", !visible)
+  })
   console.log(currentPage)
 })
 
