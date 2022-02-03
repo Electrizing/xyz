@@ -10,11 +10,18 @@ const pages = [
   ]
 ]
 
+let currentPages = []
+
 const thingTemplate = document.querySelector("[data-thing-template]")
 const stuffContainer = document.querySelector("[data-stuff-container]")
 const searchInput = document.querySelector("[data-search]")
 
-pages.forEach(page => {
+searchInput.addEventListener("input", (e) => {
+  const value = e.target.value
+  console.log(currentPage)
+})
+
+currentPage = pages.map(page => {
   const card = thingTemplate.content.cloneNode(true).children[0]
   const header = card.querySelector("[data-header]")
   const body = card.querySelector("[data-body]")
@@ -23,4 +30,6 @@ pages.forEach(page => {
   body.textContent = page[1]
   
   stuffContainer.append(card)
+  
+  return { title: page[0], description: page[1], element: card }
 })
