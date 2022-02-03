@@ -17,7 +17,7 @@ const stuffContainer = document.querySelector("[data-stuff-container]")
 const searchInput = document.querySelector("[data-search]")
 
 searchInput.addEventListener("input", (e) => {
-  const value = e.target.value
+  const value = e.target.value.toLowerCase()
   currentPage.forEach(page => {
     const visible = page.title.includes(value) || page.description.includes(value)
     page.element.classList.toggle("hide", !visible)
@@ -34,5 +34,5 @@ currentPage = pages.map(page => {
   
   stuffContainer.append(card)
   
-  return { title: page[0], description: page[1], element: card }
+  return { title: page[0].toLowerCase(), description: page[1].toLowerCase(), element: card }
 })
