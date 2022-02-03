@@ -12,6 +12,7 @@ const pages = [
 
 const thingTemplate = document.querySelector("[data-thing-template]")
 const stuffContainer = document.querySelector("[data-stuff-container]")
+const searchInput = document.querySelector("[data-search]")
 
 pages.forEach(page => {
   const card = thingTemplate.content.cloneNode(true).children[0]
