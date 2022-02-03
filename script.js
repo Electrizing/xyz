@@ -2,7 +2,7 @@ const pages = [
   [
     "Robux",
     "Robux is a currency that is used in Roblox."
-  ]
+  ],
   
   [
     "Bruh",
