@@ -3,6 +3,11 @@ const pages = [
     "Robux",
     "Robux is a currency that is used in Roblox."
   ]
+  
+  [
+    "Bruh",
+    "bruh."
+  ]
 ]
 
 const thingTemplate = document.querySelector("[data-thing-template]")
