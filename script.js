@@ -34,7 +34,7 @@ currentPage = pages.map(page => {
   
   header.textContent = page[0]
   body.textContent = page[1]
-  pagelink.href = "https://google.com"
+  pagelink.href = page[2]
   
   stuffContainer.append(card)
   
