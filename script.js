@@ -1,6 +1,6 @@
 const pages = [
    [
-    "Roblox Domains",
+    "Unusual Roblox Domains",
     "Domains that take you to roblox!",
     "pages/robloxdomains"
   ], 
