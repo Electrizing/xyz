@@ -12,5 +12,5 @@ pages.forEach(page => {
   const header = card.querySelector("[data-header]")
   const body = card.querySelector("[data-body]")
   
-  console.log(page)
+  console.log(page.Title)
 })
