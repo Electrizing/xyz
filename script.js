@@ -1,5 +1,11 @@
 const pages = [
-    [
+   [
+    "Roblox Domains",
+    "Domains that take you to roblox!",
+    "pages/robloxdomains"
+  ], 
+    
+   [
     "Santa's Winter Stronghold",
     "Special Christmas Level",
     "pages/santaswinterstronghold"
@@ -9,18 +15,6 @@ const pages = [
     "The Chronicles Of Roblox",
     "roblox lore",
     "pages/thechroniclesofroblox"
-  ],
-  
-  [
-    "Robux",
-    "Robux is a currency that is used in Roblox.",
-    "pages/robux"
-  ],
-  
-  [
-    "Bruh",
-    "bruh.",
-    "pages/bruh"
   ]
 ]
 
