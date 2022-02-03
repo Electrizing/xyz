@@ -6,6 +6,7 @@ const pages = [
 ]
 
 const thingTemplate = document.querySelector("[data-thing-template]")
+const stuffContainer = document.querySelector("[data-stuff-container]")
 
 pages.forEach(page => {
   const card = thingTemplate.content.cloneNode(true).children[0]
@@ -14,4 +15,6 @@ pages.forEach(page => {
   
   header.textContent = page[0]
   body.textContent = page[1]
+  
+  stuffContainer.append(card)
 })
