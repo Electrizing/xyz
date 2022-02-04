@@ -1,5 +1,11 @@
 const pages = [
    [
+    "1x1x1x1",
+    "scary hacker",
+    "pages/1x1x1x1"
+  ], 
+   
+   [
     "Unusual Roblox Domains",
     "Domains that take you to roblox!",
     "pages/robloxdomains"
