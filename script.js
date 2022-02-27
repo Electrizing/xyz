@@ -1,4 +1,10 @@
 const pages = [
+    [
+    "Territorial.io",
+    "Credits: territorial.io by David Leander Tschacher",
+    "pages/1x1x1x1"
+  ], 
+   
    [
     "1x1x1x1",
     "scary hacker",
