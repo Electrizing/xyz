@@ -1,4 +1,10 @@
 const pages = [
+      [
+    "Wordle",
+    "Credits: Josh Wardle / https://www.nytimes.com/games/wordle/index.html",
+    "pages/wordle/wordle.html"
+  ], 
+    
     [
     "Territorial.io",
     "Credits: territorial.io by David Leander Tschacher",
