@@ -11,29 +11,35 @@ const pages = [
     "pages/territorialio"
   ], 
    
-   [
-    "1x1x1x1",
-    "scary hacker",
-    "pages/1x1x1x1"
-  ], 
+  // [
+  //  "1x1x1x1",
+  //  "scary hacker",
+  //  "pages/1x1x1x1"
+ // ], 
    
    [
     "Unusual Roblox Domains",
-    "Domains that take you to roblox!",
+    "Domains that take you to Roblox!",
     "pages/robloxdomains"
   ], 
+      
+   [
+    "Info",
+    "unelectrized.xyz",
+    "pages/info"
+  ]   
     
-   [
-    "Santa's Winter Stronghold",
-    "Special Christmas Level",
-    "pages/santaswinterstronghold"
-  ],
+   //[
+   // "Santa's Winter Stronghold",
+  //  "Special Christmas Level",
+   // "pages/santaswinterstronghold"
+  //],
    
-   [
-    "The Chronicles Of Roblox",
-    "roblox lore",
-    "pages/thechroniclesofroblox"
-  ]
+  // [
+ //   "The Chronicles Of Roblox",
+  //  "roblox lore",
+  //  "pages/thechroniclesofroblox"
+  //]
 ]
 
 let currentPages = []
