@@ -1,7 +1,7 @@
 const pages = [
       [
     "Wordle",
-    "Credits: Josh Wardle / https://www.nytimes.com/games/wordle/index.html",
+    "Credits: Josh Wardle / www.nytimes.com",
     "pages/wordle/wordle.html"
   ], 
     
