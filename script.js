@@ -27,7 +27,7 @@ const pages = [
     "Update Log",
     "All updates logged here!",
     "pages/updatelog"
-  ]       
+  ],       
       
    [
     "Info",
