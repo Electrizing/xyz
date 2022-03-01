@@ -21,7 +21,13 @@ const pages = [
     "Unusual Roblox Domains",
     "Domains that take you to Roblox!",
     "pages/robloxdomains"
-  ], 
+  ],
+      
+  [
+    "Update Log",
+    "All updates logged here!",
+    "pages/updatelog"
+  ]       
       
    [
     "Info",
