@@ -2,13 +2,13 @@ const pages = [
        [
     "Cat Trap",
     "Credits: llerrah.com",
-    "pages/cattrap.html"
+    "pages/cattrap"
   ], 
       
       [
     "Wordle",
     "Credits: Josh Wardle / www.nytimes.com",
-    "pages/wordle/wordle.html"
+    "pages/wordle/wordle"
   ], 
     
     [
