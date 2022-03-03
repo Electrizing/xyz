@@ -1,4 +1,10 @@
 const pages = [
+       [
+    "Cat Trap",
+    "Credits: llerrah.com",
+    "pages/cattrap.html"
+  ], 
+      
       [
     "Wordle",
     "Credits: Josh Wardle / www.nytimes.com",
@@ -21,13 +27,7 @@ const pages = [
     "Unusual Roblox Domains",
     "Domains that take you to Roblox!",
     "pages/robloxdomains"
-  ],
-      
-  [
-    "Update Log",
-    "All updates logged here!",
-    "pages/updatelog"
-  ],       
+  ],   
       
    [
     "Info",
