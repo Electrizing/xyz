@@ -1,4 +1,10 @@
 const pages = [
+        [
+    "Mirror Match",
+    "Credits: donitz.itch.io",
+    "pages/mirrormatch"
+  ], 
+       
        [
     "Cat Trap",
     "Credits: llerrah.com",
