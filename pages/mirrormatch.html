@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<head>
+<title>Mirror match</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<style>
+body {
+    margin:0;
+}
+canvas {
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+</style>
+<script>
+window.addEventListener('load', () => {
+var w = window;
+var a = document.querySelector('canvas');
+var c = a.getContext('2d');
+var m = Math;
+var p2 = m.PI * 2;
+var two = [0, 1];
+
+var keyDown = new Set();
+var dirKeys = [[65, 68], [87, 83]];
+
+var playerRadius = 32;
+var ballRadius = 24;
+var velocityLerp = .8;
+var playerVelocity = 20;
+var ballVelocity = 40;
+var arenaSize = 600;
+var halfArenaSize = 300;
+var randomInitialCost = 2;
+var requiredWins = 21;
+
+var stateWeights = [0.0034, 0.0034, 0.05, 0.05, 0.0034, 0.0034, 0.025, 0.025, 0.34, 0, 0, 0, 0, 0, 0.005];
+var stateMirrors = [0, 2645, 5290, 7935];
+var maxStateHistory = 4000;
+var maxCurrentHistory = 1000;
+
+var winningStates = [];
+var currentStates = [];
+
+var iPlayerPosition = 0;
+var iPlayerVelocity = 2;
+var iBallPosition = 4;
+var iBallVelocity = 6;
+var iBallMode = 8;
+var iAim = 9;
+var iMove = 11;
+var iFire = 13;
+var iTick = 14;
+var iPerPlayer = 15;
+
+var state = new Array(iPerPlayer * 2);
+var len = (x, y) => m.sqrt(x * x + y * y);
+var get = (i, p) => state[i + p * iPerPlayer];
+var set = (i, p, v) => state[i + p * iPerPlayer] = v;
+var lerp = (x, y, t) => x * (1 - t) + y * t;
+
+var timestep = 1 / 30;
+var minTimeUntilUpdate = -2;
+var timeUntilUpdate = 0;
+var lastTime = 0;
+var lastState;
+var tick = 0;
+var tickFraction;
+var quake = [0, 0];
+var winsLeft = requiredWins;
+var mouse = [0, 0];
+var mouseDown = false;
+var canvasHalfSize;
+var zoom;
+
+var addListener = addEventListener;
+addListener('keydown', e => keyDown.add(e.keyCode));
+addListener('keyup', e => keyDown.delete(e.keyCode));
+addListener('mousedown', _ => mouseDown = true);
+addListener('mousemove', e => mouse = canvasHalfSize.map((v, i) => (e['client'+(i?'Y':'X')] - v) / zoom));
+
+var handleResize = () => {
+    a.width = window.innerWidth;
+    a.height = window.innerHeight;
+    canvasHalfSize = [a.width / 2, a.height / 2];
+    zoom = a.height / arenaSize;
+    c.setTransform(zoom, 0, 0, zoom, canvasHalfSize[0], canvasHalfSize[1]);
+};
+
+addListener('resize', handleResize);
+handleResize();
+
+var update = time => {
+    timeUntilUpdate = m.max(minTimeUntilUpdate, timeUntilUpdate - (time - lastTime) / 1000);
+    lastTime = time;
+    while (timeUntilUpdate <= 0) {
+        timeUntilUpdate += timestep;
+
+        if (keyDown.has(70)) {
+            winsLeft = -1;
+        }
+
+        if (tick++ == 0) {
+            currentStates.length = 0;
+            state.fill(0);
+            [iPlayerPosition, iBallPosition].map(i => two.map(p => set(i + 1, p, (halfArenaSize - playerRadius * 2) * (p ? -1 : 1))));
+        }
+
+        lastState = state.slice(0);
+
+        two.map(p => {
+            set(iTick, p, tick);
+
+            if (!p) {
+                var dp = two.map(d => mouse[d] - get(iPlayerPosition + d, p));
+                var l = len(dp[0], dp[1]);
+                two.map(d => {
+                    set(iAim + d, p, dp[d] / l);
+                    set(iMove + d, p, keyDown.has(dirKeys[d][0]) ? -1 : keyDown.has(dirKeys[d][1]) ? 1 : 0);
+                });
+                set(iFire, p, mouseDown);
+
+                if (!!get(iMove, p) || !!get(iMove + 1, p) || get(iFire, p)) {
+                    stateMirrors.map(mirror => currentStates.unshift(state.map((v, i) => (mirror & (1 << (i % iPerPlayer))) > 0 ? -v : v)));
+                    currentStates.length = m.min(maxCurrentHistory, currentStates.length);
+                }
+            } else {
+                var bestState = null;
+                var bestDistance = Infinity;
+                winningStates.map(s => {
+                    var distance = s.reduce((c, v, i) => c + m.abs(state[(i + iPerPlayer) % (iPerPlayer * 2)] - v) * stateWeights[i % iPerPlayer], m.random() * randomInitialCost);
+                    if (distance < bestDistance) {
+                        bestState = s;
+                        bestDistance = distance;
+                    }
+                });
+                if (bestState) {
+                    two.map(d => {
+                        set(iAim + d, p, bestState[iAim + d]);
+                        set(iMove + d, p, bestState[iMove + d]);
+                    });
+                    set(iFire, p, bestState[iFire]);
+                }
+            }
+
+            if (get(iFire, p) && !get(iBallMode, p)) {
+                two.map(d => set(iBallVelocity + d, p, ballVelocity * get(iAim + d, p)));
+                set(iBallMode, p, 1);
+            }
+            set(iFire, p, 0);
+
+            var dp;
+            var l;
+            var getDistance = (i1, i2, p2) => {
+                dp = two.map(d => get(i1 + d, p) - get(i2 + d, p2));
+                l = len(dp[0], dp[1]);
+            };
+
+            if (get(iBallMode, p) > 0) {
+                two.forEach(p2 => {
+                    getDistance(iBallPosition, iPlayerPosition, p2);
+                    if (p == p2 && get(iBallMode, p) == 2) {
+                        two.map(d => set(iBallVelocity + d, p, lerp(-(dp[d] / l) * ballVelocity, get(iBallVelocity + d, p), velocityLerp)));
+                    }
+                    if (l < ballRadius + playerRadius) {
+                        if (p != p2) {
+                            tick = 0;
+                            if (!p) {
+                                winsLeft--;
+                                var firstTick = 0;
+                                currentStates.map(s => {
+                                    if (!s[iBallMode] && !firstTick) {
+                                        firstTick = s[iTick];
+                                    }
+                                    if (firstTick) {
+                                        s[iTick] = firstTick - s[iTick];
+                                        winningStates.push(s);
+                                    }
+                                });
+                                winningStates.sort((s1, s2) => s1[iTick] - s2[iTick]);
+                                winningStates.length = m.min(maxStateHistory, winningStates.length);
+                            } else if (winsLeft > -1) {
+                                winsLeft = requiredWins;
+                                winningStates.length = 0;
+                            }
+                        } else if (get(iBallMode, p) == 2) {
+                            set(iBallMode, p, 0);
+                        }
+                    }
+                });
+                getDistance(iBallPosition, iBallPosition, 1 - p);
+                if (l < ballRadius * 2 && get(iBallMode, p) < 2) {
+                    two.map(p => two.map(d => set(iBallVelocity + d, p, get(iBallVelocity + d, p) * -1)));
+                    set(iBallMode, p, 2);
+                }
+            }
+
+            two.map(b => two.map(d => {
+                var iP = (b ? iBallPosition : iPlayerPosition) + d;
+                var iV = (b ? iBallVelocity : iPlayerVelocity) + d;
+                var r = b ? ballRadius : playerRadius;
+                var nv = get(iV, p);
+                if (!b) {
+                    nv = lerp(get(iMove + d, p) * (b ? ballVelocity : playerVelocity), nv, velocityLerp);
+                }
+                var np = get(iP, p);
+                np += nv;
+                var lower = -halfArenaSize + r;
+                var upper = halfArenaSize - r;
+                if (np < lower || np > upper) {
+                    var l = np < lower;
+                    np = l ? lower : upper;
+                    if (!d) {
+                        quake[l ? 0 : 1] = nv;
+                    }
+                    if (l && nv < 0 || !l && nv > 0) {
+                        nv *= -1;
+                    }
+                    if (b) {
+                        set(iBallMode, p, 2);
+                    }
+                }
+                set(iP, p, np);
+                set(iV, p, nv);
+
+            }));
+
+            if (!get(iBallMode, p)) {
+                two.map(d => set(iBallPosition + d, p, get(iPlayerPosition + d, p)));
+            }
+        });
+
+        mouseDown = false;
+    }
+
+    tickFraction = 1 - timeUntilUpdate / timestep;
+
+    var black = '#000';
+    var white = '#fff';
+    var fillStyle = color => c.fillStyle = color;
+    text = (text, pixelSize, y) => {
+        c.textAlign = 'center';
+        c.font = pixelSize + 'px Georgia';
+        c.fillText(text, 0, y);
+    };
+
+    fillStyle(black);
+    c.fillRect(-canvasHalfSize[0] / zoom, -canvasHalfSize[1] / zoom, canvasHalfSize[0] * 2 / zoom, canvasHalfSize[1] * 2 / zoom);
+    fillStyle(white);
+    var q = two.map(d => {
+        quake[d] *= .8;
+        return (m.random() - .5) * quake[d];
+    });
+    c.fillRect(-halfArenaSize + q[0], -halfArenaSize, arenaSize - q[0] + q[1], arenaSize);
+
+    two.map(o => two.map(p => two.map(t => {
+        fillStyle(!o ? black : p ? '#800' : '#080');
+        c.beginPath();
+        for (var a = 0; a < 8; a++) {
+            var s = tick * .01 + ((a + .5 * t) / 8) * p2;
+            var r = t ? playerRadius : ballRadius;
+            var i = (t ? iPlayerPosition : iBallPosition) + p * iPerPlayer;
+            var x = lerp(lastState[i], state[i], tickFraction);
+            var y = lerp(lastState[i + 1], state[i + 1], tickFraction) - o * 4;
+            c.moveTo(x, y);
+            c.arc(x, y, r, s, s + 0.069 * p2);
+            c.lineTo(x, y);
+        }
+        c.fill();
+    })));
+
+    fillStyle(black);
+    if (winsLeft == requiredWins) {
+        text('If you know the enemy and know yourself,', 25, -40);
+        text('you will not be imperiled in a hundred battles.', 25, -10);
+        text('WASD - Move   Mouse - Throw   F - Infinite mode', 15, 40);
+    } else if (winsLeft > 0) {
+        text(winsLeft, 40, 20);
+    } else if (!winsLeft) {
+        text('You found the way', 40, 20);
+        return;
+    }
+
+    requestAnimationFrame(update);
+};
+update(0);
+});
+</script>
+</head>
+<body>
+<canvas>
+</canvas>
+</body>
+</html>
+<script defer src="https://static.itch.io/htmlgame.js" type="text/javascript"></script>
