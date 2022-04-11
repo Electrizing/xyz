@@ -43,7 +43,7 @@ if (highscore == null || highscore == "") {
 }
 
 ammoLabel.style.display = 'none'
-highscoreLabel.innerHTML = `Highscore: ${highscore}`
+highscoreLabel.innerHTML = `Highscore: ${getCookie("highscore")}`
 
 class Player {
     constructor(x, y, radius, color) {
