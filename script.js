@@ -1,4 +1,10 @@
 const pages = [
+            [
+    "Zomballs",
+    "my game (has bugs)",
+    "pages/zomballs"
+  ], 
+        
         [
     "Mirror Match",
     "Credits: donitz.itch.io",
