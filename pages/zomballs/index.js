@@ -12,7 +12,23 @@ const hint = document.querySelector('#hint')
 const scoreLabel = document.querySelector('#scoreLabel')
 const ammoLabel = document.querySelector('#ammo')
 
-let highscore = document.cookie
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+let highscore = getCookie("highscore")
 let ammo = 10
 let playing = false
 
@@ -242,21 +258,7 @@ let animationId
 let newY = 0
 let newX = 0
 
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
+
 
 function animate() {
     animationId = requestAnimationFrame(animate)
@@ -281,7 +283,7 @@ function animate() {
             if (distance - particle.radius - player.radius < 1) {
                 cancelAnimationFrame(animationId)
 
-                let highscore = document.cookie
+                let highscore = getCookie("highscore")
 
                 if (highscore == null || highscore == "") {
                     highscore = 0
