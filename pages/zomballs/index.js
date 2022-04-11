@@ -242,6 +242,22 @@ let animationId
 let newY = 0
 let newX = 0
 
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 function animate() {
     animationId = requestAnimationFrame(animate)
     ctx.fillStyle = 'rgba(15, 15, 15, 0.1)'
@@ -272,10 +288,10 @@ function animate() {
                 }
 
                 if (score >= highscore) {
-                     document.cookie = score
+                     document.cookie = "highscore=" + highscore
                 }
 
-                highscoreLabel.innerHTML = `Highscore: ${document.cookie}`
+                highscoreLabel.innerHTML = `Highscore: ${getCookie("highscore")}`
                 hint.style.display = "flex"
                 startFrame.style.display = 'flex'
                 scoreLabel.style.display = 'none'
