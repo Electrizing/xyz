@@ -351,17 +351,17 @@ function animate() {
         if (distance - zombie.radius - player.radius < 1) {
            cancelAnimationFrame(animationId)
 
-           let highscore = document.cookie
+           let highscore = getCookie("highscore")
 
            if (highscore == null || highscore == "") {
                highscore = 0
            }
 
            if (score >= highscore) {
-               document.cookie = score
+               document.cookie = "highscore=" + score
            }
 
-           highscoreLabel.innerHTML = `Highscore: ${document.cookie}`
+           highscoreLabel.innerHTML = `Highscore: ${getCookie("highscore")}`
            hint.style.display = "flex"
            startFrame.style.display = 'flex'
            scoreLabel.style.display = 'none'
