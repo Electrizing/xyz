@@ -43,7 +43,7 @@ const pages = [
       
    [
     "Info",
-    "unelectrized.xyz",
+    "unelectrized.xyz | contact@unelectrized.xyz",
     "pages/info"
   ]   
     
