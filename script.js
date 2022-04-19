@@ -1,7 +1,7 @@
 const pages = [
     [
         "Connect 4",
-        "Connect 4 dots vilo",
+        "Connect 4 dots smolko",
         "pages/connect4"
     ],
     
