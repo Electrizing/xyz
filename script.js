@@ -60,8 +60,8 @@ const pages = [
   ],   
       
    [
-    "Info",
-    "Info and contact",
+    "Info & Contact",
+    "unelectrized.xyz",
     "pages/info"
   ]   
     
