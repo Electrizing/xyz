@@ -1,5 +1,11 @@
 const pages = [
     [
+        "Connect 4",
+        "Connect 4 dots vilo",
+        "pages/connect4"
+    ],
+    
+    [
     "Escaping the Prison",
     "Henry Stickmin 2",
     "pages/escapingprison"
