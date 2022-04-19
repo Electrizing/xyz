@@ -1,5 +1,17 @@
 const pages = [
-                  [
+    [
+    "Escaping the Prison",
+    "Henry Stickmin 2",
+    "pages/escapingprison"
+  ], 
+  
+       [
+    "Breaking the Bank",
+    "Henry Stickmin 1",
+    "pages/breakingthebank"
+  ], 
+             
+  [
     "Clash Toyale",
     "Clash Royale from bazos",
     "pages/clashtoyale"
