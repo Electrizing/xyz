@@ -1,4 +1,10 @@
 const pages = [
+                  [
+    "Clash Toyale",
+    "Clash Royale from bazos",
+    "pages/clashtoyale"
+  ], 
+            
             [
     "Zomballs",
     "my game (has bugs)",
