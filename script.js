@@ -8,7 +8,7 @@ const pages = [
             [
     "Zomballs",
     "my game (has bugs)",
-    "pages/zomballs"
+    "pages/playzomballs"
   ], 
         
         [
