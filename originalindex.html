@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Unelectrized </title>
+  <meta property="og:title" content="Unelectrized">
+  <meta property="og:description" content="unelectrized.xyz is the best website to play (unblocked) games and have fun!">
+  <link rel="icon" type="image/x-icon" href="/images/unicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+</head>
+                                                                                                             
+<body>
+  
+  <div class="parent" style="display: flex;">
+    <p style="color:white; font-family: 'JetBrains Mono', monospace;">Unelectrized</p>
+    <div class="search-wrapper" style="display: flex; flex-direction: column; gap: .25rem; padding: 14px;">
+      <input type="search" id="search" autocomplete="off"; placeholder="Search..." style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background-color: rgb(6, 12, 16); border-color: rgb(50, 58, 69); color: rgb(175, 175, 175); border: 1px solid; border-radius: 5px; height:25px;" data-search>
+    </div>
+  </div>
+  
+  <div class="stuff" data-stuff-container style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.25rem; margin-top: 1rem;">
+  </div>
+  <template data-thing-template>
+    <div class="thing">
+      <a data-pagelink style="color: rgb(175, 175, 175); font-family: 'JetBrains Mono', monospace;" href="bobux.html"><div class="header" data-header>Name</div></a>
+      <div class="body" data-body>Description</div>
+    </div>               
+  </template>
+</body>
+  
+<style>
+  body {
+    background-color: rgb(13, 17, 23);
+  }
+                       
+  .thing {
+    border: 1px solid white;
+    background-color: rgb(6, 12, 16);
+    padding: 0.5rem;
+    border-color: rgb(50, 58, 69);
+    border-radius: 5px;
+  }
+                       
+  .thing > .header {
+    margin-bottom: 0.25rem;
+    color: rgb(175, 175, 175);
+    font-family: 'JetBrains Mono', monospace;
+  }
+                       
+  .thing > .body {
+    font-size: 0.8rem;
+    color: rgb(125, 125, 125);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .hide {
+    display: none;
+  }
+</style>  
+</html>
