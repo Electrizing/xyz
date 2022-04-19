@@ -1,55 +1,55 @@
 const pages = [
     [
         "Connect 4",
-        "Connect 4 dots smolko",
+        "Connect 4 tokens in a row to win. Can be played against another player or a bot.",
         "pages/connect4"
     ],
     
     [
     "Escaping the Prison",
-    "Henry Stickmin 2",
+    "Try to escape the prison as Henry Stickmin!",
     "pages/escapingprison"
   ], 
   
        [
     "Breaking the Bank",
-    "Henry Stickmin 1",
+    "Try to break inside the bank as Henry Stickmin!",
     "pages/breakingthebank"
   ], 
              
   [
     "Clash Toyale",
-    "Clash Royale from bazos",
+    "Place cards and destroy the opponent's towers!",
     "pages/clashtoyale"
   ], 
             
             [
     "Zomballs",
-    "my game (has bugs)",
+    "A shooter game where you shoot zombies.",
     "pages/playzomballs"
   ], 
         
         [
     "Mirror Match",
-    "Credits: donitz.itch.io",
+    "Can you defeat yourself?",
     "pages/mirrormatch"
   ], 
        
        [
     "Cat Trap",
-    "Credits: llerrah.com",
+    "Trap the cat!",
     "pages/cattrap"
   ], 
       
       [
     "Wordle",
-    "Credits: Josh Wardle / www.nytimes.com",
+    "Guess the daily 5-letter word!",
     "pages/wordle/wordle"
   ], 
     
     [
     "Territorial.io",
-    "Credits: territorial.io by David Leander Tschacher",
+    "Conquer other territories!",
     "pages/territorialio"
   ], 
    
@@ -59,17 +59,17 @@ const pages = [
   //  "pages/1x1x1x1"
  // ], 
    
-   [
-    "Unusual Roblox Domains",
-    "Domains that take you to Roblox!",
-    "pages/robloxdomains"
-  ],   
+  // [
+  //  "Unusual Roblox Domains",
+  //  "Domains that take you to Roblox!",
+  //  "pages/robloxdomains"
+  //],   
       
-   [
-    "Info & Contact",
-    "unelectrized.xyz",
-    "pages/info"
-  ]   
+  // [
+  //  "Info & Contact",
+   // "unelectrized.xyz",
+  //  "pages/info"
+  //]   
     
    //[
    // "Santa's Winter Stronghold",
