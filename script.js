@@ -112,3 +112,16 @@ currentPage = pages.map(page => {
   
   return { title: page[0].toLowerCase(), description: page[1].toLowerCase(), element: card }
 })
+
+window.addEventListener(
+    'keydown',
+    function(e) {
+        if (e.key == '`') {
+            window.open(
+                'https://google.com',
+                '_blank',
+            )
+        }
+    },
+    false
+)
