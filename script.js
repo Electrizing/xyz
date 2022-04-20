@@ -4,6 +4,12 @@ const pages = [
         "Connect 4 tokens in a row to win. Can be played against another player or a bot.",
         "pages/connect4"
     ],
+
+      [
+    "Stealing the Diamond",
+    "Try to steal the diamond as Henry Stickmin!",
+    "pages/stealdiamond"
+  ], 
     
     [
     "Escaping the Prison",
