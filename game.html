@@ -36,6 +36,8 @@
       </tr>
     </tbody>
   </table>
+  <p class="text" id="developer" >Created by: Unelectrized</p>
+
   
 <style>
   body {
@@ -64,7 +66,8 @@
     [
       "connect4",
       "Connect 4",
-      "https://www.hoodamath.com/mobile/games/connect-4/game.html?nocheckorient=1"
+      "https://www.hoodamath.com/mobile/games/connect-4/game.html?nocheckorient=1",
+      "Codethislab"
     ],
   ]
 
@@ -78,6 +81,7 @@
         document.title = currGame[1] + " - Unelectrized"
         document.querySelector("#gameName").textContent = currGame[1]
         document.querySelector("#bodyFrame").src = currGame[2]
+        document.querySelector("#developer").textContent = "Created by: " + currGame[3]
         return
     } 
   })
