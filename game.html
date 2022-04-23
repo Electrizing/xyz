@@ -70,8 +70,8 @@
   currentGame = games.map(currGame => {
     if (currGame[0] == game) {
         document.title = currGame[1] + " - Unelectrized"
-        document.querySelector("gameName").textContent = currGame[1]
-        document.querySelector("bodyFrame").src = currGame[2]
+        document.querySelector("#gameName").textContent = currGame[1]
+        document.querySelector("#bodyFrame").src = currGame[2]
         return
     } 
   })
