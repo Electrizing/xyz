@@ -2,7 +2,7 @@ const pages = [
     [
         "Connect 4",
         "Connect 4 tokens in a row to win. Can be played against another player or a bot.",
-        "pages/connect4"
+        "game?game=connect4"
     ],
 
       [
